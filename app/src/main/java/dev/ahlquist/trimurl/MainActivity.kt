@@ -16,15 +16,35 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val data = intent.getStringExtra(Intent.EXTRA_PROCESS_TEXT)
+        val intent = intent
+
+        // TODO check action = SEND
+
+        val urlText = intent.getStringExtra(Intent.EXTRA_TEXT)
 
         setContent {
             TrimURLTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting(data)
+                    Greeting(urlText)
                 }
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        val urlText = intent?.getStringExtra(Intent.EXTRA_TEXT)
+
+        setContent {
+            TrimURLTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(color = MaterialTheme.colors.background) {
+                    Greeting(urlText)
+                }
+            }
+        }
+
+        super.onNewIntent(intent)
     }
 }
 
