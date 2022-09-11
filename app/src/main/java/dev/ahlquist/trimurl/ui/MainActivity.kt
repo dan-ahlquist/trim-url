@@ -1,4 +1,4 @@
-package dev.ahlquist.trimurl
+package dev.ahlquist.trimurl.ui
 
 import android.content.Intent
 import android.os.Bundle
